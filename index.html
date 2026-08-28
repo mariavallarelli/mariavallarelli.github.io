@@ -37,6 +37,25 @@
       padding: 112px max(24px, calc((100vw - 1100px) / 2));
     }
 
+    .hero-content {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(32px, 7vw, 92px);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .profile-photo {
+      width: clamp(190px, 25vw, 280px);
+      aspect-ratio: 1;
+      border: 8px solid rgba(255, 255, 255, .9);
+      border-radius: 50%;
+      box-shadow: 18px 18px 0 rgba(0, 185, 189, .3), 0 20px 50px rgba(0, 0, 0, .24);
+      object-fit: cover;
+      object-position: center 24%;
+    }
+
     header::before,
     header::after {
       position: absolute;
@@ -196,6 +215,15 @@
         font-size: 3.25rem;
       }
 
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-photo {
+        order: -1;
+        width: 180px;
+      }
+
       section {
         margin: 60px auto;
       }
@@ -215,17 +243,22 @@
 <body>
 
 <header>
-  <h1>Maria Vallarelli</h1>
-  <p><strong>Senior Data Scientist</strong></p>
-  <p>Generative AI • LLMOps • Renewable Energy AI • Data Science</p>
-  <p>Designing AI systems that transform complex and unstructured data into actionable insights.</p>
+  <div class="hero-content">
+    <div>
+      <h1>Maria Vallarelli</h1>
+      <p><strong>Senior Data Scientist</strong></p>
+      <p>Generative AI • LLMOps • Renewable Energy AI • Data Science</p>
+      <p>Designing AI systems that transform complex and unstructured data into actionable insights.</p>
 
-  <nav class="buttons" aria-label="Primary navigation">
-    <a href="#projects">Projects</a>
-    <a href="#publications">Publications</a>
-    <a href="#talks">Talks</a>
-    <a href="#contact">Contact</a>
-  </nav>
+      <nav class="buttons" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#talks">Talks</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <img class="profile-photo" src="images/maria-vallarelli.jpeg" alt="Maria Vallarelli" />
+  </div>
 </header>
 
 <section id="about">
