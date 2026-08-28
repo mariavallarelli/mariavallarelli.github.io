@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maria Vallarelli | AI & Data Science Portfolio</title>
+  <style>
+    :root {
+      --ink: #10233f;
+      --muted: #526176;
+      --paper: #f6f8fc;
+      --surface: #ffffff;
+      --line: #dce4ef;
+      --blue: #2155d9;
+      --cyan: #00b9bd;
+      --orange: #f07d53;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.7;
+    }
+
+    header {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: linear-gradient(125deg, #091a33 0%, #102b56 52%, #2155d9 145%);
+      color: white;
+      padding: 112px max(24px, calc((100vw - 1100px) / 2));
+    }
+
+    header::before,
+    header::after {
+      position: absolute;
+      z-index: -1;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 50%;
+      content: "";
+    }
+
+    header::before { top: -265px; right: 7%; box-shadow: 0 0 0 72px rgba(0, 185, 189, .08), 0 0 0 144px rgba(255, 255, 255, .04); }
+    header::after { right: -175px; bottom: -260px; width: 520px; height: 520px; background: rgba(240, 125, 83, .15); }
+
+    header h1 {
+      max-width: 800px;
+      margin: 0 0 12px;
+      font-size: clamp(3.25rem, 8vw, 6.25rem);
+      letter-spacing: -.07em;
+      line-height: .95;
+    }
+
+    header p {
+      max-width: 760px;
+      margin: 10px 0;
+      color: #d7e5ff;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    header p:first-of-type {
+      color: #66f1ea;
+      font-size: .78rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 999px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, .08);
+      color: white;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .buttons a:hover,
+    .buttons a:focus-visible {
+      border-color: white;
+      background: white;
+      color: var(--ink);
+      outline: 3px solid #66f1ea;
+      outline-offset: 3px;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 88px auto;
+      padding: 0 24px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 28px;
+      color: var(--ink);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -.045em;
+      line-height: 1.1;
+    }
+
+    h2::after {
+      width: 56px;
+      height: 4px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      content: "";
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      min-height: 220px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 12px 28px rgba(16, 35, 63, .05);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .card:hover {
+      border-color: #aabedf;
+      box-shadow: 0 18px 42px rgba(16, 35, 63, .12);
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 1.22rem;
+      letter-spacing: -.025em;
+      line-height: 1.25;
+    }
+
+    .card p { margin: 0 0 16px; color: var(--muted); }
+    .card p:last-child { margin-bottom: 0; }
+
+    .card a {
+      color: var(--blue);
+      font-weight: 750;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 4px 5px 4px 0;
+      padding: 5px 11px;
+      border: 1px solid #c8d7ee;
+      border-radius: 999px;
+      background: #eef4ff;
+      color: #27466f;
+      font-size: .78rem;
+      font-weight: 650;
+    }
+
+    a {
+      color: var(--blue);
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 72px 24px;
+      }
+
+      header h1 {
+        font-size: 3.25rem;
+      }
+
+      section {
+        margin: 60px auto;
+      }
+
+      .card { min-height: 0; }
+    }
+
+    footer {
+      padding: 42px 24px;
+      background: var(--ink);
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Maria Vallarelli</h1>
+  <p><strong>Senior Data Scientist</strong></p>
+  <p>Generative AI • LLMOps • Renewable Energy AI • Data Science</p>
+  <p>Designing AI systems that transform complex and unstructured data into actionable insights.</p>
+
+  <nav class="buttons" aria-label="Primary navigation">
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
+    <a href="#talks">Talks</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>About</h2>
+  <p>
+    I am a Senior Data Scientist at Eni Plenitude, specializing in the design and development of end-to-end AI solutions, from multimodal data pipelines to LLM-based agents. I work with complex time-series and unstructured data, building scalable, production-ready AI systems. My interests include Generative AI, Retrieval-Augmented Generation (RAG), LLMOps, and the application of machine learning to improve renewable energy efficiency and support data-driven decision-making.
+  </p>
+
+  <p>
+    I am particularly interested in the intersection between AI, renewable energy,
+    knowledge extraction, and decision intelligence.
+  </p>
+
+  <div>
+    <span class="tag">Generative AI</span>
+    <span class="tag">RAG</span>
+    <span class="tag">LLMOps</span>
+    <span class="tag">MLOps</span>
+    <span class="tag">Databricks</span>
+    <span class="tag">MLflow</span>
+    <span class="tag">Python</span>
+    <span class="tag">Neo4j</span>
+    <span class="tag">Renewable Energy</span>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Featured Projects</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Answerability-First RAG</h3>
+      <p>
+        A Retrieval-Augmented Generation architecture focused on validating evidence
+        before generating answers, enabling more reliable and grounded AI responses.
+      </p>
+      <p>
+        <strong>Focus:</strong> RAG, evidence validation, answerability scoring, hallucination reduction.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Renewable Energy AI Agents</h3>
+      <p>
+        AI-based workflows for analysing solar and wind maintenance reports,
+        extracting operational insights, and supporting predictive maintenance use cases.
+      </p>
+      <p>
+        <strong>Focus:</strong> document intelligence, Databricks Genie, AI agents, renewable assets.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Voice of Customer Analytics</h3>
+      <p>
+        Topic extraction and customer feedback analysis using BERTopic, embeddings,
+        LLM-based summarisation, and scalable evaluation workflows.
+      </p>
+      <p>
+        <strong>Focus:</strong> NLP, customer insights, clustering, LLM evaluation.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="publications">
+  <h2>Publications</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Databricks Blog</h3>
+      <p>
+        Transforming solar and wind maintenance reports with Genie and AI agents.
+      </p>
+      <a href="https://www.databricks.com/blog/transforming-solar-and-wind-maintenance-reports-genie-and-ai-agents" target="_blank" rel="noopener noreferrer">
+        Read article
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Answerability-First RAG</h3>
+      <p>
+        Validating evidence before generating answers in Retrieval-Augmented Generation systems.
+      </p>
+      <a href="https://medium.com/@marivallarelli/answerability-first-rag-validating-evidence-before-generating-answers-db458ad1a9ea" target="_blank" rel="noopener noreferrer">
+        Read article
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>Voice of Customer with BERTopic and OpenAI</h3>
+      <p>
+        Transforming customer feedback into actionable insights using BERTopic and OpenAI on Databricks.
+      </p>
+      <a href="https://medium.com/eni-digitalks/transforming-voice-of-customer-into-actionable-insights-with-bertopic-and-openai-on-databricks-aff3d4679011" target="_blank" rel="noopener noreferrer">
+        Read article
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="talks">
+  <h2>Talks & Events</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>
+        <a href="https://2026.pycon.it/en/profile/dynkmb" target="_blank" rel="noopener noreferrer">
+          PyCon Italia
+        </a>
+      </h3>
+      <p>
+        Talk on Answerability-First RAG for mixed text and tables,
+        focused on evidence-grounded AI systems.
+      </p>
+      <p>
+        <a href="https://2026.pycon.it/en/profile/dynkmb" target="_blank" rel="noopener noreferrer">
+          View speaker profile
+        </a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>
+        <a href="https://www.osservatori.net/convegno/data-decision-intelligence/convegno-risultati-ricerca-osservatorio-data-decision-intelligence/" target="_blank" rel="noopener noreferrer">
+          Politecnico di Milano
+        </a>
+      </h3>
+      <p>
+        Presentation on AI agents and Databricks-based solutions for solar and wind maintenance reports.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Data & AI Community</h3>
+      <p>
+        Contributions and technical content on Applied AI, LLMOps,
+        document intelligence and decision intelligence.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="open-source">
+  <h2>Open Source</h2>
+  <p>
+    Selected repositories and demos will be added here, including projects on RAG,
+    MCP, DSPy, AI agents, and graph-based knowledge extraction.
+  </p>
+
+  <p>
+    GitHub:
+    <a href="https://github.com/mariavallarelli" target="_blank" rel="noopener noreferrer">
+      github.com/mariavallarelli
+    </a>
+  </p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>
+    LinkedIn:
+    <a href="https://it.linkedin.com/in/maria-vallarelli-b5008b21" target="_blank" rel="noopener noreferrer">
+      Maria Vallarelli
+    </a>
+  </p>
+
+  <p>
+    GitHub:
+    <a href="https://github.com/mariavallarelli" target="_blank" rel="noopener noreferrer">
+      @mariavallarelli
+    </a>
+  </p>
+
+  <p>
+    Medium:
+    <a href="https://medium.com/@marivallarelli" target="_blank" rel="noopener noreferrer">
+      @marivallarelli
+    </a>
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 Maria Vallarelli · AI & Data Science Portfolio</p>
+</footer>
+
+</body>
+</html>
